@@ -7,3 +7,5 @@ You can work in a group.
 Create your own branch, never merge back into main. Main is to be a 'template' branch.
 
 Create some interactive graphics program that is related to robot code, such as a Jeopardy! game about the robot code.
+
+To build, add configuration, select Gradle, add tasks "clean build run", click Apply, then OK.
