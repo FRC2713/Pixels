@@ -5,7 +5,7 @@ import pixels.Shapes.Text;
 
 import static org.lwjgl.glfw.GLFW.*;
 
-public class Canvas {
+public class Canvas<i> {
 
     private int x = 0;
     private int y = 0;
@@ -15,8 +15,30 @@ public class Canvas {
     private boolean pickup = false;
     private Rectangle rect = new Rectangle();
     private Rectangle rect2 = new Rectangle();
+    private Rectangle rect3 = new Rectangle();
     private Text text = new Text();
+    private Rectangle[] petals = new Rectangle[5];
+    private Rectangle stem = new Rectangle();
 
+    public void makePetals()
+    {
+        int baseX = 350;
+        int baseY = 350;
+
+        for (int i = 0; i < petals.length; i++)
+        {
+            petals[i] = new Rectangle();
+            if (i == 0) petals[i].setPos(baseX,baseY+50);
+            if (i == 1) petals[i].setPos(baseX-40,baseY-50);
+            if (i == 2) petals[i].setPos(baseX+40, baseY-50);
+            if (i == 3) petals[i].setPos(baseX-50, baseY+10);
+            if (i == 4) petals[i].setPos(baseX+50, baseY+10);
+            petals[i].setColor(160,0,252);
+            petals[i].setWidth(50);
+            petals[i].setHeight(50);
+            petals[i].draw();
+        }
+    }
     public void getKey(int key, int action) {
         if (key == GLFW_KEY_W) {
             y += 10;
@@ -66,6 +88,20 @@ public class Canvas {
         rect2.setHeight(50);
         rect2.updateBoundingBox();
 
+        rect3.setPos(350,350);
+        rect3.setWidth(50);
+        rect3.setHeight(50);
+        rect3.updateBoundingBox();
+        rect3.setColor(246,255,0);
+
+        stem.setPos(350,200);
+        stem.setWidth(50);
+        stem.setHeight(150);
+        stem.setColor(0,255,0);
+
+
+
+
         if (mode == 1) rect2.setColor(255,0,0);
         if (mode == 2) rect2.setColor(0,255,0);
         if (mode == 3) rect2.setColor(0,0,255);
@@ -86,14 +122,17 @@ public class Canvas {
             }
         });
 
-        text.setText("Hello World!!!!");
+        text.setText("Flower!!!!");
         if (!pickup) text.setPos(600, 600);
         text.setSize(4);
         text.setColor(0,0, 255);
         text.updateBoundingBox();
 
+        stem.draw();
         text.draw();
         rect.draw();
         rect2.draw();
+        rect3.draw();
+        makePetals();
     }
 }
