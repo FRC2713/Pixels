@@ -45,7 +45,7 @@ public class Canvas {
             mode += 1;
         }
 
-        if (button == GLFW_MOUSE_BUTTON_LEFT && action ==GLFW_PRESS) {
+        if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS) {
             pickup = true;
         } else {
             pickup = false;
